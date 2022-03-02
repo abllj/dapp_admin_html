@@ -5,16 +5,16 @@ import request from '@/utils/request'
  */
 export function statisticalWithdraw() {
   return request({
-    url: '/api/Withdraw/statistical',
+    url: '/api/home/withdraw',
     method: 'get'
   })
 }
 /*
- 统计提币
+ 统计会员
  */
 export function statisticalMember() {
   return request({
-    url: '/api/Member/statistical',
+    url: '/api/home/member',
     method: 'get'
   })
 }
@@ -36,7 +36,7 @@ export function statisticalRobotRevenue() {
 /* 统计会员等级 */
 export function statisticalMemberGrade() {
   return request({
-    url: '/api/Member/statisticalGrade',
+    url: '/api/home/grade',
     method: 'get'
   })
 }

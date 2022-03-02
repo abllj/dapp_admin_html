@@ -4,7 +4,7 @@
     <div class="head-container">
       <div v-if="crud.props.searchToggle">
         <!-- 搜索 -->
-        <el-input v-model="query.title" clearable placeholder="输入标题搜索内容" style="width: 150px;" class="filter-item"
+        <el-input v-model="query.title" clearable placeholder="输入名称搜索内容" style="width: 150px;" class="filter-item"
           @keyup.enter.native="crud.toQuery" />
         <el-select v-model="query.noticeType" clearable placeholder="公告类型" class="filter-item" style="width: 130px">
           <el-option v-for="item in dict.notice_type" :key="item.id" :label="item.label" :value="item.value" />

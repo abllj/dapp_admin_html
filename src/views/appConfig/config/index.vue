@@ -7,6 +7,9 @@
         <el-input v-model="query.configName" clearable placeholder="输入配置名" style="width: 180px;" class="filter-item"
           @keyup.enter.native="crud.toQuery" />
 
+        <el-select v-model="query.type" clearable placeholder="类型" class="filter-item" style="width: 130px">
+          <el-option v-for="item in queryTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
+        </el-select>
         <rrOperation :crud="crud" />
       </div>
       <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
@@ -47,25 +50,19 @@
       <el-table ref="table" v-loading="crud.loading" :data="crud.data" size="small" style="width: 100%;"
         @selection-change="crud.selectionChangeHandler">
         <el-table-column type="selection" width="55" />
-        <el-table-column align="center" prop="configName" label="配置名" />
+        <el-table-column align="center" prop="configName" label="配置名" width="160" />
        <el-table-column align="center" prop="configValue" label="配置值" >
          <template slot-scope="scope">
-<!--           <span v-if="crud.data[scope.$index].isPullDown ==1" >{{ dict.label.yes_no[scope.row.configValue] }}</span>
-           <span v-else-if="crud.data[scope.$index].isPullDown !=1" >{{ scope.row.configValue }}</span> -->
            <span >{{ scope.row.configValue }}</span>
          </template>
        </el-table-column>
-        <el-table-column align="center" prop="configRemark" label="配置描述" />
-        <el-table-column align="center" prop="status" label="状态">
+        <el-table-column align="center" prop="configRemark" label="配置描述" width="160"/>
+       <el-table-column align="center" prop="status" label="状态" width="100">
           <template slot-scope="scope">
             {{ dict.label.yes_no[scope.row.status] }}
           </template>
         </el-table-column>
-        <el-table-column align="center" width="135" prop="gmtCreate" label="创建时间">
-          <template slot-scope="scope">
-            <span>{{ parseTime(scope.row.gmtCreate) }}</span>
-          </template>
-        </el-table-column>
+
         <el-table-column v-if="checkPer(['admin','Config:edit','Config:del'])" label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <udOperation :data="scope.row" :permission="permission" />
@@ -163,7 +160,12 @@
         queryTypeOptions: [{
           key: 'configName',
           display_name: '配置名'
-        }]
+        },
+        {
+          key: 'configRemark',
+          display_name: '配置描述'
+        }
+        ]
       }
     },
     watch: {},
