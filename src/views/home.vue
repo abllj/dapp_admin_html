@@ -28,6 +28,12 @@
             <bar-chart />
           </div>
         </el-col>
+        <el-col :xs="24" :sm="24" :lg="8">
+          <div class="chart-wrapper">
+           <span >赛车等级</span>
+            <car-chart />
+          </div>
+        </el-col>
       </el-row>
     </div>
   </div>
@@ -41,6 +47,7 @@
     import PanelGroupT from './dashboard/PanelGroupT'
   import LineChart from './dashboard/LineChart'
   import BarChart from './dashboard/BarChart'
+  import CarChart from './dashboard/CarChart'
   import {
     parseTime
   } from '@/utils/index.js'
@@ -50,7 +57,8 @@
       PanelGroup,
       PanelGroupT,
       LineChart,
-      BarChart
+      BarChart,
+      CarChart
     },
     data() {
       return {

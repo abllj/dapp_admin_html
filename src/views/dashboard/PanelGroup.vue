@@ -38,10 +38,10 @@
              <div class="all-right">
                <div class="card-panel" @click="handleSetLineChartData('recharge',recharge.record)">
                   <div class="card-panel-icon-wrapper icon-recharge">
-                    <svg-icon icon-class="recharge" class-name="card-panel-icon" />
+                    <svg-icon icon-class="tixian" class-name="card-panel-icon" />
                   </div>
                 </div>
-                <span>充值总数</span>
+                <span>总购买金额</span>
               </div>
               <span class="el-tag  el-tag--small ">全平台</span>
             </div>
